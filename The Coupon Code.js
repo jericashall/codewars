@@ -18,7 +18,7 @@ function checkCoupon(enteredCode, correctCode, currentDate, expirationDate){
     // create arrays from the expirationDate and currentDate strings, removing the ','
     let expirationDateArr = expirationDate.replace(',', '').split(' '), currentDateArr = currentDate.replace(',', '').split(' ')
     // create an array of all months
-    let months = ["January", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "Novemeber", "December"]
+    let months = ["January", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     // set variables for the array index of the current date month and expiration date month
     let currentDateIndex = months.indexOf(currentDateArr[0]), expirationDateIndex= months.indexOf(expirationDateArr[0])
     if (currentDateArr[2] < expirationDateArr[2]) {
