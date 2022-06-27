@@ -1,0 +1,54 @@
+/*The year is 2088 and the Radical Marxist Socialist People's Party (RMSPP) has just seized power in Brazil.
+
+Their first act in power is absolute wealth equality through coercive redistribution.
+
+Create a function that redistributes all wealth equally among all citizens.
+
+Wealth is represented as an array/list where every index is the wealth of a single citizen.
+The function should mutate the input such that every index has the same amount of wealth.
+MUTATE the input array/list, don't return anything.
+
+See example:
+
+wealth = [5, 10, 6]  # This represents:
+                     # citizen 1 has wealth 5
+                     # citizen 2 has wealth 10
+                     # citizen 3 has wealth 6
+                     
+redistribute_wealth(wealth) # mutates wealth list
+wealth => [7, 7, 7] # wealth has now been equally redistributed
+Info:
+
+MUTATE the input array/list, don't return anything
+Input is garantueed to hold at least 1 citizen
+Wealth of citizen will an integer with minimum 0 (negative wealth not possible)
+Handling of floating point error will not be tested*/
+
+function redistributeWealth(wealth) {
+  let sum = wealth.reduce((total, x) => total + +x, 0)
+  let redistribution = sum/wealth.length
+  for(let i = 0; i < wealth.length; i++) {
+    wealth[i] = redistribution
+  }
+}
+
+/*tests*/
+
+const { assert, config } = require('chai'); config.truncateThreshold = 0;
+
+describe("Wealth equality", function(){
+  it ("example tests", function(){
+    const wealthEqual = [5,5,5,5,5]; // already equal
+    assert.strictEqual(redistributeWealth(wealthEqual),undefined,"do not return anything");
+    assert.deepEqual(wealthEqual, [5,5,5,5,5], "wealth in input array should have been unaffected");
+    const wealthUnequal = [0, 10]; // unequal
+    assert.strictEqual(redistributeWealth(wealthUnequal),undefined,"do not return anything");;
+    assert.deepEqual(wealthUnequal, [5, 5], "wealth in input array should have been redistributed");
+    const wealthSingle = [5]; // single citizen
+    assert.strictEqual(redistributeWealth(wealthSingle),undefined,"do not return anything");
+    assert.deepEqual(wealthSingle, [5], "wealth in input array should have been unaffected");
+    const wealthFloat = [3,2,2]; // floating point result
+    assert.strictEqual(redistributeWealth(wealthFloat),undefined,"do not return anything");
+    assert.deepEqual(wealthFloat, [2.3333333333333335,2.3333333333333335, 2.3333333333333335], "wealth in input array should have been redistributed");
+  });
+});
