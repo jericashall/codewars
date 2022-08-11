@@ -10,9 +10,10 @@ function rentalCarCost(d) {
     return d >= 7 ? 40 * d - 50 : d >= 3 ? 40 * d - 20 : 40 * d
   }
 
+  console.log(0.3 + 0.2 === 0.5)
 /*tests*/
 
-const chai = require("chai");
+/*const chai = require("chai");
 const assert = chai.assert;
 chai.config.truncateThreshold=0;
 
@@ -35,4 +36,4 @@ describe("Regular Tests:", function() {
     assert.strictEqual(rentalCarCost(9), 310);
     assert.strictEqual(rentalCarCost(10), 350);    
   });
-});
+});*/
