@@ -12,4 +12,4 @@ function flyBy(lamps, drone){
     const onLength = drone.length > lamps.length ? lamps.length : drone.length
     const offLength = lamps.length > drone.length ? lamps.length - drone.length : 0
     return 'o'.repeat(onLength) + 'x'.repeat(offLength)
-  }
+}
